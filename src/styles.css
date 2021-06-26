@@ -10,7 +10,12 @@ Document
 /**
 Use a better box model (opinionated).
 */
-
+.mat-drawer-inner-container{
+  overflow: visible !important;
+}
+.ps-content{
+  height: 100%;
+}
 *,
 ::before,
 ::after {

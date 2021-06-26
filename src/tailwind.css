@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mat-drawer-inner-container{
+  overflow: visible !important;
+}

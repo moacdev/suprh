@@ -2,8 +2,11 @@
   <mat-nav-list style="padding-top: 0px;">
 
     <style>
+        mat-list-item:hover{
+            background-color: #3b4752a8 !important;
+        }
         mat-list-item.active{
-            background-color: #4d5b69;
+            background-color: #3b4752;
         }
         mat-list-item a, mat-list-item span {
             color: white;
@@ -21,106 +24,172 @@
         mat-list-item.active a, mat-list-item.active span{
             color: white;
         }
+        perfect-scrollbar{
+            min-width: 100%;
+            width: auto;
+            overflow-x: visible;
+        }
+
+        mat-nav-list{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .sub{
+            display: none;
+        }
+
+        /* .sub a{
+            color: white;
+            opacity: .9
+        }
+        .sub a:hover{
+            opacity: 1;
+        } */
+
+        .sub-c:hover .sub{
+            display: flex;
+        }
+        
+        
+
     </style>
 
-          <div>
-              <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu1 = !subMenu1">
-                  <svg matListIcon class="h-4 w-4" routerLinkActive="text-white" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
-                  <a routerLink='/paie/codification' class="text-white" matLine>Codification</a>
-                  <div *ngIf="isMobile">
-                      <svg *ngIf="!subMenu1" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
-                      <svg *ngIf="subMenu1" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+          <div class="relative flex min-w-full " [ngClass]="{'sub-c': !isMobile}">
+              <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                  <mat-list-item class="flex justify-between w-64" routerLinkActive="active" (click)="subMenu1 = !subMenu1">
+                      <svg matListIcon class="h-4 w-4" routerLinkActive="text-white" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+                      <a routerLink='/paie/codification' class="text-white" matLine>Codification</a>
+                      <div *ngIf="isMobile">
+                          <svg *ngIf="!subMenu1" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                          <svg *ngIf="subMenu1" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+                      </div>
+                  </mat-list-item>
+    
+                  <div *ngIf="isMobile" [ngClass]="{'hidden': (!subMenu1) }" class="flex flex-col ml-1 border-l-2 bg-gray-100 border-blue-800 visible">
+                      <a mat-list-item routerLink="#">Grades</a>
+                      <a mat-list-item routerLink="#">Fonctions</a>
+                      <a mat-list-item routerLink="#">Primes</a>
+                      <a mat-list-item routerLink="#">Echelon</a>
+                      <a mat-list-item routerLink="#">Indemnités</a>
+                      <a mat-list-item routerLink="#">Direction</a>
+                      <a mat-list-item routerLink="#">Département</a>
+    
                   </div>
-              </mat-list-item>
-
-              <div *ngIf="isMobile" [ngClass]="{'hidden': (!subMenu1) }" class="flex flex-col ml-1 border-l-2 bg-gray-100 border-blue-800 visible">
-                  <a mat-list-item routerLink="#">Grades</a>
-                  <a mat-list-item routerLink="#">Fonctions</a>
-                  <a mat-list-item routerLink="#">Primes</a>
-                  <a mat-list-item routerLink="#">Echelon</a>
-                  <a mat-list-item routerLink="#">Indemnités</a>
-                  <a mat-list-item routerLink="#">Direction</a>
-                  <a mat-list-item routerLink="#">Département</a>
-
               </div>
-          </div>
-          <div>
-              <a routerLink="gestion-conges">
-                    <mat-list-item routerLinkActive="active">
-                    <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M506.584 256c-52.307 0-72.012 46.513-87.263 27.506-20.125-25.082-2.028-107.233 3.475-131.942-34.229 6.371-137.243 24.274-163.836 2.178-16.619-13.81 31.313-43.496 31.313-86.443C290.272 26.025 256.447 0 214.842 0c-43.559 0-84.792 25.609-84.792 68.824 0 53.02 45.898 71.605 24.351 88.606C125.985 179.846 35.346 160.524 0 152.041v345.313c33.315 8.012 70.681 14.649 106.163 14.646 42.28 0 85.837-11.839 85.837-54.125 0-29.344-32-40.832-32-73.875 0-24.437 22.534-32 46.978-32C245.675 352 256 372.114 256 384c0 28.783-34.272 36.348-34.272 76.58 0 13.748 5.013 25.445 14.498 33.828 35.153 31.069 106.717 6.319 187.085 6.285-.958-3.426-26.807-86.724-7.702-111.907 16.715-22.023 48.578 29.106 92.52 29.106C550.227 417.893 576 377.616 576 336c0-42.835-26.227-80-69.416-80zm1.544 129.893c-30.002 0-41.364-33.893-81.513-33.893-53.566 0-54.841 64.979-44.272 117.816-36.396 3.424-107.025 16.434-124.926.614C237.293 452.645 288 428.279 288 384c0-37.683-33.317-64-81.022-64-74.981 0-102.885 59.829-56.167 122.037 4.726 6.293 9.189 12.237 9.189 15.838 0 33.69-94.005 20.629-128 13.925V191.971c63.255 11.657 160 18.136 160-46.505 0-28.567-29.95-42.982-29.95-76.642C162.05 44.146 190.265 32 214.842 32c20.035 0 43.43 9.244 43.43 35.298 0 29.426-34.272 40.752-34.272 80.61 0 57.828 100.845 50.931 158.22 43.093C374.142 245.294 373.959 320 429.086 320c29.143 0 43.674-32 77.498-32C531.543 288 544 311.301 544 336c0 34.413-20.977 49.893-35.872 49.893z"/></svg>
-                    <span matLine>Congés/Absence</span>
-                </mat-list-item>
-            </a>
-          </div>
 
-          <div>
-              <a routerLink="employes">
-                    <mat-list-item routerLinkActive="active">
-                    <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M506.584 256c-52.307 0-72.012 46.513-87.263 27.506-20.125-25.082-2.028-107.233 3.475-131.942-34.229 6.371-137.243 24.274-163.836 2.178-16.619-13.81 31.313-43.496 31.313-86.443C290.272 26.025 256.447 0 214.842 0c-43.559 0-84.792 25.609-84.792 68.824 0 53.02 45.898 71.605 24.351 88.606C125.985 179.846 35.346 160.524 0 152.041v345.313c33.315 8.012 70.681 14.649 106.163 14.646 42.28 0 85.837-11.839 85.837-54.125 0-29.344-32-40.832-32-73.875 0-24.437 22.534-32 46.978-32C245.675 352 256 372.114 256 384c0 28.783-34.272 36.348-34.272 76.58 0 13.748 5.013 25.445 14.498 33.828 35.153 31.069 106.717 6.319 187.085 6.285-.958-3.426-26.807-86.724-7.702-111.907 16.715-22.023 48.578 29.106 92.52 29.106C550.227 417.893 576 377.616 576 336c0-42.835-26.227-80-69.416-80zm1.544 129.893c-30.002 0-41.364-33.893-81.513-33.893-53.566 0-54.841 64.979-44.272 117.816-36.396 3.424-107.025 16.434-124.926.614C237.293 452.645 288 428.279 288 384c0-37.683-33.317-64-81.022-64-74.981 0-102.885 59.829-56.167 122.037 4.726 6.293 9.189 12.237 9.189 15.838 0 33.69-94.005 20.629-128 13.925V191.971c63.255 11.657 160 18.136 160-46.505 0-28.567-29.95-42.982-29.95-76.642C162.05 44.146 190.265 32 214.842 32c20.035 0 43.43 9.244 43.43 35.298 0 29.426-34.272 40.752-34.272 80.61 0 57.828 100.845 50.931 158.22 43.093C374.142 245.294 373.959 320 429.086 320c29.143 0 43.674-32 77.498-32C531.543 288 544 311.301 544 336c0 34.413-20.977 49.893-35.872 49.893z"/></svg>
-                    <span matLine>Employés</span>
-                </mat-list-item>
-            </a>
-          </div>
-
-          <div>
-              <mat-list-item class="flex justify-between w-full" (click)="subMenu2 = !subMenu2">
-                  <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M344 240H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zm0 96H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zM418.1 0c-5.8 0-11.8 1.8-17.3 5.7L357.3 37 318.7 9.2c-8.4-6-18.2-9.1-28.1-9.1-9.8 0-19.6 3-28 9.1L224 37 185.4 9.2C177 3.2 167.1.1 157.3.1s-19.6 3-28 9.1L90.7 37 47.2 5.7C41.8 1.8 35.8 0 29.9 0 14.4.1 0 12.3 0 29.9v452.3C0 499.5 14.3 512 29.9 512c5.8 0 11.8-1.8 17.3-5.7L90.7 475l38.6 27.8c8.4 6 18.2 9.1 28.1 9.1 9.8 0 19.6-3 28-9.1L224 475l38.6 27.8c8.4 6 18.3 9.1 28.1 9.1s19.6-3 28-9.1l38.6-27.8 43.5 31.3c5.4 3.9 11.4 5.7 17.3 5.7 15.5 0 29.8-12.2 29.8-29.8V29.9C448 12.5 433.7 0 418.1 0zM416 477.8L376 449l-18.7-13.5-18.7 13.5-38.6 27.8c-2.8 2-6 3-9.3 3-3.4 0-6.6-1.1-9.4-3.1L242.7 449 224 435.5 205.3 449l-38.6 27.8c-2.8 2-6 3-9.4 3-3.4 0-6.6-1.1-9.4-3.1L109.3 449l-18.7-13.5L72 449l-40 29.4V34.2L72 63l18.7 13.5L109.4 63 148 35.2c2.8-2 6-3 9.3-3 3.4 0 6.6 1.1 9.4 3.1L205.3 63 224 76.5 242.7 63l38.6-27.8c2.8-2 6-3 9.4-3 3.4 0 6.6 1.1 9.4 3.1L338.7 63l18.7 13.5L376 63l40-28.8v443.6zM344 144H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8z"/></svg>
-                  <a routerLink="/paie/paie" matLine>Paie</a>
-                  <div >
-                      <svg *ngIf="!subMenu2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
-                      <svg *ngIf="subMenu2" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
-                  </div>
-              </mat-list-item>
-
-              <div [ngClass]="{'hidden': !subMenu2}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
-              </div>
-          </div>
-
-          <div>
-            <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu_retenu = !subMenu_retenu">
-                <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M344 240H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zm0 96H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zM418.1 0c-5.8 0-11.8 1.8-17.3 5.7L357.3 37 318.7 9.2c-8.4-6-18.2-9.1-28.1-9.1-9.8 0-19.6 3-28 9.1L224 37 185.4 9.2C177 3.2 167.1.1 157.3.1s-19.6 3-28 9.1L90.7 37 47.2 5.7C41.8 1.8 35.8 0 29.9 0 14.4.1 0 12.3 0 29.9v452.3C0 499.5 14.3 512 29.9 512c5.8 0 11.8-1.8 17.3-5.7L90.7 475l38.6 27.8c8.4 6 18.2 9.1 28.1 9.1 9.8 0 19.6-3 28-9.1L224 475l38.6 27.8c8.4 6 18.3 9.1 28.1 9.1s19.6-3 28-9.1l38.6-27.8 43.5 31.3c5.4 3.9 11.4 5.7 17.3 5.7 15.5 0 29.8-12.2 29.8-29.8V29.9C448 12.5 433.7 0 418.1 0zM416 477.8L376 449l-18.7-13.5-18.7 13.5-38.6 27.8c-2.8 2-6 3-9.3 3-3.4 0-6.6-1.1-9.4-3.1L242.7 449 224 435.5 205.3 449l-38.6 27.8c-2.8 2-6 3-9.4 3-3.4 0-6.6-1.1-9.4-3.1L109.3 449l-18.7-13.5L72 449l-40 29.4V34.2L72 63l18.7 13.5L109.4 63 148 35.2c2.8-2 6-3 9.3-3 3.4 0 6.6 1.1 9.4 3.1L205.3 63 224 76.5 242.7 63l38.6-27.8c2.8-2 6-3 9.4-3 3.4 0 6.6 1.1 9.4 3.1L338.7 63l18.7 13.5L376 63l40-28.8v443.6zM344 144H104c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h240c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8z"/></svg>
-                <a routerLink="/paie/paie" matLine>Retenu</a>
-                <div >
-                    <svg *ngIf="!subMenu_retenu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
-                    <svg *ngIf="subMenu_retenu" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+              <div [ngClass]="{'hidden': (subMenu1) }" class="relative w-64 flex flex-col" *ngIf="!isMobile" [ngClass]="{'sub': !isMobile}">
+                <div class="absolute top-0 left-0 w-full bg-gray-100 z-50" >
+                    <a mat-list-item routerLink="#">Grades</a>
+                    <a mat-list-item routerLink="#">Fonctions</a>
+                    <a mat-list-item routerLink="#">Primes</a>
+                    <a mat-list-item routerLink="#">Echelon</a>
+                    <a mat-list-item routerLink="#">Indemnités</a>
+                    <a mat-list-item routerLink="#">Direction</a>
+                    <a mat-list-item routerLink="#">Département</a>
                 </div>
-            </mat-list-item>
 
-            <div [ngClass]="{'hidden': !subMenu_retenu}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
-              <a mat-list-item routerLink="#">Avances</a>
-              <a mat-list-item routerLink="#">Acomptes</a>
+            </div>
+          </div>
+
+          <div class="relative flex min-w-full">
+              <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                  <a routerLink="gestion-conges">
+                        <mat-list-item routerLinkActive="active">
+                        <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/><path d="M16.54,11L13,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L16.54,11z M11,7H2v2h9V7z M21,13.41L19.59,12L17,14.59 L14.41,12L13,13.41L15.59,16L13,18.59L14.41,20L17,17.41L19.59,20L21,18.59L18.41,16L21,13.41z M11,15H2v2h9V15z"/></g></svg>
+                        <span matLine>Congés/Absence</span>
+                    </mat-list-item>
+                </a>
+              </div>
+          </div>
+
+          <div class="relative flex min-w-full">
+              <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                  <a routerLink="employes">
+                        <mat-list-item routerLinkActive="active">
+                        <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24" y="0"/></g><g><g><rect height="1.5" width="4" x="14" y="12"/><rect height="1.5" width="4" x="14" y="15"/><path d="M20,7h-5V4c0-1.1-0.9-2-2-2h-2C9.9,2,9,2.9,9,4v3H4C2.9,7,2,7.9,2,9v11c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V9 C22,7.9,21.1,7,20,7z M11,7V4h2v3v2h-2V7z M20,20H4V9h5c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2h5V20z"/><circle cx="9" cy="13.5" r="1.5"/><path d="M11.08,16.18C10.44,15.9,9.74,15.75,9,15.75s-1.44,0.15-2.08,0.43C6.36,16.42,6,16.96,6,17.57V18h6v-0.43 C12,16.96,11.64,16.42,11.08,16.18z"/></g></g></svg>
+                        <span matLine>Employés</span>
+                    </mat-list-item>
+                </a>
+              </div>
+        </div>
+
+
+        <div class="relative flex min-w-full">
+            <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                <mat-list-item routerLinkActive="active" class="flex justify-between w-full" (click)="subMenu2 = !subMenu2">
+                  <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zm-7-6.74L16.71 6H6.29l5.21-2.74m0-2.26L2 6v2h19V6l-9.5-5z"/></svg>
+                    <a routerLink="/paie/paie" matLine>Paie</a>
+                    <div *ngIf="isMobile">
+                        <svg *ngIf="!subMenu2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                        <svg *ngIf="subMenu2" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+                    </div>
+                </mat-list-item>
+  
+                <div *ngIf="isMobile" [ngClass]="{'hidden': !subMenu2}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
+                </div>
             </div>
         </div>
 
-          <div>
-              <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu3 = !subMenu3">
-                  <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M544 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zM320 256c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm0-192c44.1 0 80 35.9 80 80s-35.9 80-80 80-80-35.9-80-80 35.9-80 80-80zm244 192h-40c-15.2 0-29.3 4.8-41.1 12.9 9.4 6.4 17.9 13.9 25.4 22.4 4.9-2.1 10.2-3.3 15.7-3.3h40c24.2 0 44 21.5 44 48 0 8.8 7.2 16 16 16s16-7.2 16-16c0-44.1-34.1-80-76-80zM96 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm304.1 180c-33.4 0-41.7 12-80.1 12-38.4 0-46.7-12-80.1-12-36.3 0-71.6 16.2-92.3 46.9-12.4 18.4-19.6 40.5-19.6 64.3V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-44.8c0-23.8-7.2-45.9-19.6-64.3-20.7-30.7-56-46.9-92.3-46.9zM480 432c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-44.8c0-16.6 4.9-32.7 14.1-46.4 13.8-20.5 38.4-32.8 65.7-32.8 27.4 0 37.2 12 80.2 12s52.8-12 80.1-12c27.3 0 51.9 12.3 65.7 32.8 9.2 13.7 14.1 29.8 14.1 46.4V432zM157.1 268.9c-11.9-8.1-26-12.9-41.1-12.9H76c-41.9 0-76 35.9-76 80 0 8.8 7.2 16 16 16s16-7.2 16-16c0-26.5 19.8-48 44-48h40c5.5 0 10.8 1.2 15.7 3.3 7.5-8.5 16.1-16 25.4-22.4z"/></svg>
-                  <a routerLink="/paie/administration" matLine>Administration</a>
-                  <div >
-                      <svg *ngIf="!subMenu3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
-                      <svg *ngIf="subMenu3" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+        <div class="relative flex min-w-full">
+            <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+              <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu_retenu = !subMenu_retenu">
+                  <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/><path d="M14,2H6C4.9,2,4,2.9,4,4v16c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8L14,2z M6,20V4h7v4h5v12H6z M11,19h2v-1h1 c0.55,0,1-0.45,1-1v-3c0-0.55-0.45-1-1-1h-3v-1h4v-2h-2V9h-2v1h-1c-0.55,0-1,0.45-1,1v3c0,0.55,0.45,1,1,1h3v1H9v2h2V19z"/></g></svg>
+                  <a routerLink="/paie/retenu" matLine>Retenu</a>
+                  <div *ngIf="isMobile">
+                      <svg *ngIf="!subMenu_retenu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                      <svg *ngIf="subMenu_retenu" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
                   </div>
               </mat-list-item>
-
-              <div [ngClass]="{'hidden': !subMenu3}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
-                      <a mat-list-item routerLink="#">Gestion des utilisateurs</a>
-                      <a mat-list-item routerLink="#">Profils</a>
-                      <a mat-list-item routerLink="#">Permissions</a>
+  
+              <div *ngIf="isMobile" [ngClass]="{'hidden': !subMenu_retenu}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
+                <a mat-list-item routerLink="#">Avances</a>
+                <a mat-list-item routerLink="#">Acomptes</a>
               </div>
           </div>
+        </div>
 
-          <div>
-              <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu4 = !subMenu4">
-                  <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M482.696 299.276l-32.61-18.827a195.168 195.168 0 0 0 0-48.899l32.61-18.827c9.576-5.528 14.195-16.902 11.046-27.501-11.214-37.749-31.175-71.728-57.535-99.595-7.634-8.07-19.817-9.836-29.437-4.282l-32.562 18.798a194.125 194.125 0 0 0-42.339-24.48V38.049c0-11.13-7.652-20.804-18.484-23.367-37.644-8.909-77.118-8.91-114.77 0-10.831 2.563-18.484 12.236-18.484 23.367v37.614a194.101 194.101 0 0 0-42.339 24.48L105.23 81.345c-9.621-5.554-21.804-3.788-29.437 4.282-26.36 27.867-46.321 61.847-57.535 99.595-3.149 10.599 1.47 21.972 11.046 27.501l32.61 18.827a195.168 195.168 0 0 0 0 48.899l-32.61 18.827c-9.576 5.528-14.195 16.902-11.046 27.501 11.214 37.748 31.175 71.728 57.535 99.595 7.634 8.07 19.817 9.836 29.437 4.283l32.562-18.798a194.08 194.08 0 0 0 42.339 24.479v37.614c0 11.13 7.652 20.804 18.484 23.367 37.645 8.909 77.118 8.91 114.77 0 10.831-2.563 18.484-12.236 18.484-23.367v-37.614a194.138 194.138 0 0 0 42.339-24.479l32.562 18.798c9.62 5.554 21.803 3.788 29.437-4.283 26.36-27.867 46.321-61.847 57.535-99.595 3.149-10.599-1.47-21.972-11.046-27.501zm-65.479 100.461l-46.309-26.74c-26.988 23.071-36.559 28.876-71.039 41.059v53.479a217.145 217.145 0 0 1-87.738 0v-53.479c-33.621-11.879-43.355-17.395-71.039-41.059l-46.309 26.74c-19.71-22.09-34.689-47.989-43.929-75.958l46.329-26.74c-6.535-35.417-6.538-46.644 0-82.079l-46.329-26.74c9.24-27.969 24.22-53.869 43.929-75.969l46.309 26.76c27.377-23.434 37.063-29.065 71.039-41.069V44.464a216.79 216.79 0 0 1 87.738 0v53.479c33.978 12.005 43.665 17.637 71.039 41.069l46.309-26.76c19.709 22.099 34.689 47.999 43.929 75.969l-46.329 26.74c6.536 35.426 6.538 46.644 0 82.079l46.329 26.74c-9.24 27.968-24.219 53.868-43.929 75.957zM256 160c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"/></svg>
-                  <a routerLink="parametres" matLine>Paramètres</a>
-                  <div >
-                      <svg *ngIf="!subMenu4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
-                      <svg *ngIf="subMenu4" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
-                  </div>
-              </mat-list-item>
+        <div class="relative flex min-w-full">
+            <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu3 = !subMenu3">
+                    <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M544 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zM320 256c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm0-192c44.1 0 80 35.9 80 80s-35.9 80-80 80-80-35.9-80-80 35.9-80 80-80zm244 192h-40c-15.2 0-29.3 4.8-41.1 12.9 9.4 6.4 17.9 13.9 25.4 22.4 4.9-2.1 10.2-3.3 15.7-3.3h40c24.2 0 44 21.5 44 48 0 8.8 7.2 16 16 16s16-7.2 16-16c0-44.1-34.1-80-76-80zM96 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm304.1 180c-33.4 0-41.7 12-80.1 12-38.4 0-46.7-12-80.1-12-36.3 0-71.6 16.2-92.3 46.9-12.4 18.4-19.6 40.5-19.6 64.3V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-44.8c0-23.8-7.2-45.9-19.6-64.3-20.7-30.7-56-46.9-92.3-46.9zM480 432c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-44.8c0-16.6 4.9-32.7 14.1-46.4 13.8-20.5 38.4-32.8 65.7-32.8 27.4 0 37.2 12 80.2 12s52.8-12 80.1-12c27.3 0 51.9 12.3 65.7 32.8 9.2 13.7 14.1 29.8 14.1 46.4V432zM157.1 268.9c-11.9-8.1-26-12.9-41.1-12.9H76c-41.9 0-76 35.9-76 80 0 8.8 7.2 16 16 16s16-7.2 16-16c0-26.5 19.8-48 44-48h40c5.5 0 10.8 1.2 15.7 3.3 7.5-8.5 16.1-16 25.4-22.4z"/></svg>
+                    <a routerLink="/paie/administration" matLine>Administration</a>
+                    <div *ngIf="isMobile">
+                        <svg *ngIf="!subMenu3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                        <svg *ngIf="subMenu3" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+                    </div>
+                </mat-list-item>
+  
+                <div *ngIf="isMobile" [ngClass]="{'hidden': !subMenu3}" class="ml-1 border-l-2 bg-gray-100 border-blue-600 visible">
+                        <a mat-list-item routerLink="#">Gestion des utilisateurs</a>
+                        <a mat-list-item routerLink="#">Profils</a>
+                        <a mat-list-item routerLink="#">Permissions</a>
+                </div>
+            </div>
+        </div>
 
-              <div [ngClass]="{'hidden': !subMenu4}" class="ml-1 border-l-2 bg-gray-100 border-blue-600visible">
-              </div>
-          </div>
+        <div class="relative flex min-w-full">
+            <div class="flex flex-col w-64 border-r-2 border-gray-400" style="background-color: #4d5b69;">
+                <mat-list-item class="flex justify-between w-full" routerLinkActive="active" (click)="subMenu4 = !subMenu4">
+                    <svg matListIcon class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M482.696 299.276l-32.61-18.827a195.168 195.168 0 0 0 0-48.899l32.61-18.827c9.576-5.528 14.195-16.902 11.046-27.501-11.214-37.749-31.175-71.728-57.535-99.595-7.634-8.07-19.817-9.836-29.437-4.282l-32.562 18.798a194.125 194.125 0 0 0-42.339-24.48V38.049c0-11.13-7.652-20.804-18.484-23.367-37.644-8.909-77.118-8.91-114.77 0-10.831 2.563-18.484 12.236-18.484 23.367v37.614a194.101 194.101 0 0 0-42.339 24.48L105.23 81.345c-9.621-5.554-21.804-3.788-29.437 4.282-26.36 27.867-46.321 61.847-57.535 99.595-3.149 10.599 1.47 21.972 11.046 27.501l32.61 18.827a195.168 195.168 0 0 0 0 48.899l-32.61 18.827c-9.576 5.528-14.195 16.902-11.046 27.501 11.214 37.748 31.175 71.728 57.535 99.595 7.634 8.07 19.817 9.836 29.437 4.283l32.562-18.798a194.08 194.08 0 0 0 42.339 24.479v37.614c0 11.13 7.652 20.804 18.484 23.367 37.645 8.909 77.118 8.91 114.77 0 10.831-2.563 18.484-12.236 18.484-23.367v-37.614a194.138 194.138 0 0 0 42.339-24.479l32.562 18.798c9.62 5.554 21.803 3.788 29.437-4.283 26.36-27.867 46.321-61.847 57.535-99.595 3.149-10.599-1.47-21.972-11.046-27.501zm-65.479 100.461l-46.309-26.74c-26.988 23.071-36.559 28.876-71.039 41.059v53.479a217.145 217.145 0 0 1-87.738 0v-53.479c-33.621-11.879-43.355-17.395-71.039-41.059l-46.309 26.74c-19.71-22.09-34.689-47.989-43.929-75.958l46.329-26.74c-6.535-35.417-6.538-46.644 0-82.079l-46.329-26.74c9.24-27.969 24.22-53.869 43.929-75.969l46.309 26.76c27.377-23.434 37.063-29.065 71.039-41.069V44.464a216.79 216.79 0 0 1 87.738 0v53.479c33.978 12.005 43.665 17.637 71.039 41.069l46.309-26.76c19.709 22.099 34.689 47.999 43.929 75.969l-46.329 26.74c6.536 35.426 6.538 46.644 0 82.079l46.329 26.74c-9.24 27.968-24.219 53.868-43.929 75.957zM256 160c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"/></svg>
+                    <a routerLink="parametres" matLine>Paramètres</a>
+                    <div *ngIf="isMobile">
+                        <svg *ngIf="!subMenu4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                        <svg *ngIf="subMenu4" xmlns="http://www.w3.org/2000/svg"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+                    </div>
+                </mat-list-item>
+    
+                <div *ngIf="isMobile" [ngClass]="{'hidden': !subMenu4}" class="ml-1 border-l-2 bg-gray-100 border-blue-600visible">
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex min-w-full h-full">
+            <div class="w-64 h-full border-r-2 border-gray-400" style="background-color: #4d5b69;">
+            </div>
+            <div></div>
+        </div>
+
+
       </mat-nav-list>
 </perfect-scrollbar>

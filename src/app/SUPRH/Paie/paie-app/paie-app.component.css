@@ -12,3 +12,7 @@ mat-sidenav {
 mat-nav-list{
   padding-top: 0;
 }
+
+mat-sidenav, .mat-drawer-inner-container{
+  overflow: visible !important;
+}
