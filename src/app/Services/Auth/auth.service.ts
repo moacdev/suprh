@@ -8,6 +8,8 @@ export class AuthService {
   isAuth: boolean = true;
   isAdmin: boolean = true;
 
+
+
   constructor() { }
 
 
@@ -15,6 +17,10 @@ export class AuthService {
 
   logout(){
     this.isAdmin = false;
+  }
+
+  fakeAuth(){
+    this.isAuth = true;
   }
 
 }

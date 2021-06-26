@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaieEmployesComponent implements OnInit {
 
+  _isGridListing: boolean = false;
+
+  totalUser: any = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

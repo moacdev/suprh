@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { PaieModuleRoutingModule } from './paie-module-routing.module';
 import { Routes } from '@angular/router';
+import { UserCardComponent } from '../user-card/user-card.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
+
     PaieModuleRoutingModule
   ]
 })

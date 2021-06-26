@@ -11,10 +11,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 export class PaieAppComponent implements OnInit {
 
   opened: boolean = true
-  subMenu1: boolean = false;
-  subMenu2: boolean = false;
-  subMenu3: boolean = false;
-  subMenu4: boolean = false;
+
 
   isMobile: boolean = false;
 
@@ -23,11 +20,6 @@ export class PaieAppComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, public breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     this.breakpointObserver
       .observe(['(max-width: 600px)'])
       .subscribe((state: BreakpointState) => {
@@ -40,6 +32,7 @@ export class PaieAppComponent implements OnInit {
         }
       });
   }
+
 
   toggleSide(){
     this.opened = !this.opened
