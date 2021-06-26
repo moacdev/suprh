@@ -1,0 +1,23 @@
+<div class="relative flex min-w-full " [ngClass]="{'sub-c': !isMobile}">
+    <div class="flex flex-col w-64 border-r border-gray-600" style="background-color: #4d5b69;">
+        <mat-list-item class="flex justify-between w-64" routerLinkActive="active" (click)="subMenu = !subMenu">
+            <div mat-list-icon [innerHTML]="_data.icon"></div>
+            <a [routerLink]='_data.href' class="text-white" matLine>{{ _data.label }}</a>
+            <div *ngIf="isMobile">
+                <svg *ngIf="!subMenu" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white" viewBox="0 0 448 512" class="h-4 w-4"><path d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z"/></svg>
+                <svg *ngIf="subMenu" xmlns="http://www.w3.org/2000/svg" routerLinkActive="text-white"  class="h-4 w-4" viewBox="0 0 448 512"><path d="M4.465 366.475l7.07 7.071c4.686 4.686 12.284 4.686 16.971 0L224 178.053l195.494 195.493c4.686 4.686 12.284 4.686 16.971 0l7.07-7.071c4.686-4.686 4.686-12.284 0-16.97l-211.05-211.051c-4.686-4.686-12.284-4.686-16.971 0L4.465 349.505c-4.687 4.686-4.687 12.284 0 16.97z"/></svg>
+            </div>
+        </mat-list-item>
+
+        <div *ngIf="isMobile" [ngClass]="{'hidden': (!subMenu) }" class="flex flex-col ml-1 border-l-2 bg-gray-100 border-blue-800 visible">
+            <a mat-list-item routerLink="#" *ngFor="let dd of _data.dropdown">{{ dd.label }}</a>
+        </div>
+    </div>
+
+    <div [ngClass]="{'hidden': (subMenu) }" class="relative w-64 flex flex-col" *ngIf="!isMobile" [ngClass]="{'sub': !isMobile}">
+      <div class="absolute top-0 left-0 w-full bg-gray-100 z-50" style="background-color: #4d5b69;">
+          <a mat-list-item routerLink="#" *ngFor="let dd of _data.dropdown">{{ dd.label }}</a>
+      </div>
+
+  </div>
+</div>

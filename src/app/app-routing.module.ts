@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
+
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { SidenavComponent } from './SUPRH/Paie/sidenav/sidenav.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,7 @@ import { AccessGuardService } from './Services/Guards/Access-Guest/access-guard.
 import { FormsModule } from '@angular/forms';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AuthService } from './Services/Auth/auth.service';
+import { SidenavItemComponent } from './SUPRH/Paie/sidenav/sidenav-item/sidenav-item.component';
 
 
 const routes: Routes = [
@@ -60,6 +62,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations:[
+
+    SidenavItemComponent,
     SidenavComponent,
     AppComponent,
     MainPageComponent,
@@ -76,7 +80,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     PerfectScrollbarModule,
-    RouterModule.forRoot( routes, { useHash: true } ),
+    RouterModule.forRoot( routes ),
 
   ],
   exports: [RouterModule],

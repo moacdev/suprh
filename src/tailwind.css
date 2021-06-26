@@ -5,3 +5,7 @@
 .mat-drawer-inner-container{
   overflow: visible !important;
 }
+
+.ps-content{
+  height: 100%;
+}

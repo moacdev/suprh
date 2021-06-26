@@ -47,6 +47,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    
     UserRowComponent,
     UserCardComponent,
     PaieCodificationComponent,

@@ -1,0 +1,52 @@
+mat-list-item:hover{
+    background-color: #3b4752a8;
+}
+mat-list-item.active{
+    background-color: #3b4752 !important;
+}
+mat-list-item a, mat-list-item span {
+    color: white;
+    opacity: .9;
+}
+
+mat-list-item:hover a, mat-list-item:hover span{
+    opacity: 1;
+}
+mat-list-item svg, .mat-list-icon{
+    color: #7ba0bb;
+    fill: currentColor;
+}
+
+mat-list-item.active a, mat-list-item.active span{
+    color: white;
+}
+perfect-scrollbar{
+    min-width: 100%;
+    width: auto;
+    overflow-x: visible;
+}
+
+mat-nav-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sub{
+    display: none;
+}
+
+.sub a{
+    color: white;
+    opacity: .9
+}
+.sub a:hover{
+    opacity: 1;
+} 
+
+.sub-c:hover .sub{
+    display: flex;
+}
+
+a[mat-list-item]{
+    height: 56px;
+}
