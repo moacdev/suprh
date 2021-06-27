@@ -23,8 +23,8 @@ export class SidenavItemService {
           href: "/paie/codification/fonctions",
         },
         {
-          label: "Primes",
-          href: "/paie/codification/primes",
+          label: "Catégories",
+          href: "/paie/codification/categories",
         },
         {
           label: "Echelon",
@@ -65,15 +65,15 @@ export class SidenavItemService {
     {
       icon: 4,
       label: "Retenu",
-      href: "/retenu/paie",
+      href: "/paie/retenu",
       dropdown: [
         {
           label: "Avances",
-          href: ""
+          href: "/paie/retenu/avances"
         },
         {
           label: "Acomptes",
-          href: ""
+          href: "/paie/retenu/acomptes"
         }
       ],
     },
@@ -84,15 +84,15 @@ export class SidenavItemService {
       dropdown: [
         {
           label: "Gestion des utilisateurs",
-          href: ""
+          href: "/paie/administration/gestion-utilisateurs"
         },
         {
           label: "Profils",
-          href: ""
+          href: "/paie/administration/gestion-profils"
         },
         {
           label: "Permissions",
-          href: ""
+          href: "/paie/administration/gestion-permissions"
         }
       ],
     },
