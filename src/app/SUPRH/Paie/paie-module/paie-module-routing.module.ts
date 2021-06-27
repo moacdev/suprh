@@ -9,9 +9,13 @@ import { PaieUtilisateursComponent } from '../paie-utilisateurs/paie-utilisateur
 import { UserCardComponent } from '../user-card/user-card.component';
 
 import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
 
 import { CommonModule } from '@angular/common';
 import { UserRowComponent } from '../user-row/user-row.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const routes: Routes = [
   {
@@ -47,7 +51,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    
     UserRowComponent,
     UserCardComponent,
     PaieCodificationComponent,
@@ -61,6 +64,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FormsModule,
+    MatFormFieldModule
   ],
   exports: [RouterModule]
 })

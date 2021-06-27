@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AuthService } from './Services/Auth/auth.service';
 import { SidenavItemComponent } from './SUPRH/Paie/sidenav/sidenav-item/sidenav-item.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 const routes: Routes = [
@@ -62,7 +63,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations:[
-
     SidenavItemComponent,
     SidenavComponent,
     AppComponent,
