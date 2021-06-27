@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { UserRowComponent } from '../user-row/user-row.component';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'; 
 
 const routes: Routes = [
   {
@@ -67,7 +68,9 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    
   ],
   exports: [RouterModule]
 })

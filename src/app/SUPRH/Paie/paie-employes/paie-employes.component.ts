@@ -5,20 +5,13 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 
-export interface UserData {
+export interface Structure {
   id: string;
-  name: string;
-  progress: string;
-  fruit: string;
+  matricule: string; 
+  nom_complet: string; 
+  date_entree: string; 
+  fonction: string;
 }
-
-const FRUITS: string[] = [
-  'blueberry', 'lychee', 'kiwi', 'mango', 'peach', 'lime', 'pomegranate', 'pineapple'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 
 @Component({
@@ -28,34 +21,45 @@ const NAMES: string[] = [
 })
 export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
-  // _isGridListing: boolean = false;
+  
+  displayedColumns: string[] = ['id', 'matricule', 'nom_complet', 'date_entree', 'fonction'];
 
-  // totalUser: any = [
-  //   {},
-  //   {},
-  //   {},
-  //   {},
-  //   {},
-  //   {},
-  //   {},
-  //   {},
-  // ];
+  _data: Structure | any;
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<Structure>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
   constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this._data = [
+      {
+        id: "0",
+        matricule: "9501234",
+        nom_complet: "Sekou Touré",
+        date_entree: "22/06/20",
+        fonction: "Prof de Math",
+      },
+      {
+        id: "0",
+        matricule: "9564042",
+        nom_complet: "Mohamed Maiga",
+        date_entree: "05/01/19",
+        fonction: "Prof de Compta",
+      },
+    ];
+
+    this.dataSource = new MatTableDataSource(this._data);
   }
+
+  getRow(row: any){
+    console.log(row)
+  }
+
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   ngAfterViewInit() {
@@ -64,25 +68,14 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(event: Event) {
+
     const filterValue = (event.target as HTMLInputElement).value;
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))]
-  };
-
 }

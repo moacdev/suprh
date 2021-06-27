@@ -80,7 +80,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     PerfectScrollbarModule,
-    RouterModule.forRoot( routes, { useHash: true } ),
+    RouterModule.forRoot( routes),
 
   ],
   exports: [RouterModule],
