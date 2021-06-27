@@ -3,15 +3,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { EmployesService, Structure } from 'src/app/Services/Models/Employes/employes.service';
 
 
-export interface Structure {
-  id: string;
-  matricule: string; 
-  nom_complet: string; 
-  date_entree: string; 
-  fonction: string;
-}
+
 
 
 @Component({
@@ -22,7 +17,7 @@ export interface Structure {
 export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
   
-  displayedColumns: string[] = ['id', 'matricule', 'nom_complet', 'date_entree', 'fonction'];
+  displayedColumns: string[];
 
   _data: Structure | any;
 
@@ -31,24 +26,13 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor() {
+  constructor(private employesService: EmployesService) {
 
-    this._data = [
-      {
-        id: "0",
-        matricule: "9501234",
-        nom_complet: "Sekou Touré",
-        date_entree: "22/06/20",
-        fonction: "Prof de Math",
-      },
-      {
-        id: "0",
-        matricule: "9564042",
-        nom_complet: "Mohamed Maiga",
-        date_entree: "05/01/19",
-        fonction: "Prof de Compta",
-      },
-    ];
+    this._data = this.employesService.getData();
+    
+    
+
+    this.displayedColumns = this.employesService.getDisplayedColumns()
 
     this.dataSource = new MatTableDataSource(this._data);
   }
