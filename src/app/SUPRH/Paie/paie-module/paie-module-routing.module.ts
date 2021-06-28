@@ -9,9 +9,11 @@ import { PaieUtilisateursComponent } from '../paie-utilisateurs/paie-utilisateur
 import { UserCardComponent } from '../user-card/user-card.component';
 
 import { MatTableModule } from "@angular/material/table";
+import { MatButtonModule } from "@angular/material/button";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { CommonModule } from '@angular/common';
 import { UserRowComponent } from '../user-row/user-row.component';
@@ -147,6 +149,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
+    MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -154,7 +157,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    
+    MatDialogModule,
   ],
   exports: [RouterModule]
 })

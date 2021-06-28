@@ -70,3 +70,4 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
   
 }
+

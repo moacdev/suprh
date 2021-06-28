@@ -1,6 +1,10 @@
 
 <div class="h-full w-full bg-white p-2 employee">
 
+  <div class="w-full my-2 flex">
+    <button mat-raised-button color="primary" class="h-8 p-4 ml-auto" style="margin-left: auto;margin-right: 10px;">Ajouter un utilisateur</button>
+  </div>
+
   <mat-form-field appearance="standard" class="bg-white">
     <mat-label>Recherche</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex:  Nom, Matricule, Fonction" #input>
@@ -45,7 +49,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRow(row)" class="cursor-pointer"></tr>
   
 
-      <tr class="mat-row" *ngIf="true" >
+      <tr class="mat-row" *ngIf="true">
         <td class="mat-cell" colspan="5">
           <mat-spinner diameter="30" style="margin: 15px auto;"></mat-spinner>
         </td>
@@ -55,7 +59,7 @@
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="5">
-          <mat-spinner diameter="30" style="margin: 15px auto;"></mat-spinner>
+            Aucun résultat
         </td>
       </tr>
 
