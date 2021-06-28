@@ -24,6 +24,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AuthService } from './Services/Auth/auth.service';
 import { SidenavItemComponent } from './SUPRH/Paie/sidenav/sidenav-item/sidenav-item.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 const routes: Routes = [
@@ -80,11 +81,11 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     PerfectScrollbarModule,
-    RouterModule.forRoot( routes, {useHash: true}),
+    RouterModule.forRoot( routes),
 
   ],
   exports: [RouterModule],
-  providers: [AccessGuardService, AuthService, AuthGuardService, GuestGuardService]
+  providers: [AccessGuardService, AuthService, AuthGuardService, GuestGuardService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 
 export class AppRoutingModule { }

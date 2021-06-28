@@ -16,6 +16,7 @@ import { EmployesService, Structure } from 'src/app/Services/Models/Employes/emp
 })
 export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
+  isLoading: boolean = true;
   
   displayedColumns: string[];
 
@@ -60,6 +61,10 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.isLoading = false
+    }, 3000);
     
   }
 
