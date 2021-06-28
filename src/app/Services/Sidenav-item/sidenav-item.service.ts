@@ -39,6 +39,10 @@ export class SidenavItemService {
           href: "/paie/codification/direction",
         },
         {
+          label: "Services",
+          href: "/paie/codification/services",
+        },
+        {
           label: "Departement",
           href: "/paie/codification/departement",
         },

@@ -30,6 +30,7 @@ import { GestionPermissionsComponent } from '../administration-page/gestion-perm
 import { GestionProfilsComponent } from '../administration-page/gestion-profils/gestion-profils.component';
 import { AcomptesComponent } from '../retenu-page/acomptes/acomptes.component';
 import { AvancesComponent } from '../retenu-page/avances/avances.component';
+import { ServiceComponent } from '../paie-codification/service/service.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path: "codification/direction",
     component: DirectionComponent,
+  },
+  {
+    path: "codification/service",
+    component: ServiceComponent,
   },
   {
     path: "codification/departement",
@@ -117,6 +122,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    ServiceComponent,
     RetenuPageComponent,
     AdministrationPageComponent,
     GestionProfilsComponent,

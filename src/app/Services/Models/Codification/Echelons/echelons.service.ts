@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 export interface Structure {
   id: string;
+  code: string;
+  libelle: string;
+  etat: string;
 }
 @Injectable({
   providedIn: 'root'
@@ -17,7 +20,7 @@ export class EchelonsService {
     return this.displayedColumns;
   }
 
-  displayedColumns: string[] = ['id']
+  displayedColumns: string[] = ['id', 'code', 'libelle', 'etat']
 
   constructor() { }
 }
