@@ -67,7 +67,7 @@ const routes: Routes = [
     component: DirectionComponent,
   },
   {
-    path: "codification/service",
+    path: "codification/services",
     component: ServiceComponent,
   },
   {
