@@ -5,5 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class GradesService {
 
+  getData(): any {
+    return [
+    ];
+  }
+  
+  getDisplayedColumns(): string[] {
+    return this.displayedColumns;
+  }
+
+  displayedColumns: string[] = ['id']
+
   constructor() { }
 }

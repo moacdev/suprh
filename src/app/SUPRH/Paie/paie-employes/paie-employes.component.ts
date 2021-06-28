@@ -41,11 +41,6 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
     console.log(row)
   }
 
-
-  ngOnInit(): void {
-    
-  }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -62,4 +57,11 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
     }
 
   }
+
+
+  ngOnInit(): void {
+    
+  }
+
+  
 }
