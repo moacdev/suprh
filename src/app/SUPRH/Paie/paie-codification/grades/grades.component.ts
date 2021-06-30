@@ -25,6 +25,8 @@ export class GradesComponent implements OnInit {
   constructor(private gradeService: GradesService) {
 
     this._data = this.gradeService.getData();
+
+    //this.gradeService.Datas()
     
     
 

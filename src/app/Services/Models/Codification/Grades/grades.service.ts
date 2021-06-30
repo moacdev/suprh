@@ -6,9 +6,7 @@ export interface Structure {
   libelle: string;
   etat: string;
 }
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GradesService {
 
   getData(): any {
@@ -37,8 +35,9 @@ export class GradesService {
   getDisplayedColumns(): string[] {
     return this.displayedColumns;
   }
-
   displayedColumns: string[] = ['id', 'code', 'libelle', 'etat'];
 
   constructor() { }
+
+  
 }

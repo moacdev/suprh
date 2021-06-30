@@ -1,9 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { EmployesService, Structure } from 'src/app/Services/Models/Employes/employes.service';
+
+import { HttpClient} from "@angular/common/http";
+import { Observable } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
 
 
 
@@ -27,24 +31,43 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor(private employesService: EmployesService) {
+  constructor(private employesService: EmployesService, private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {
 
-    this._data = this.employesService.getData();
+    //this._data = this.employesService.getData();
     
     
+  
 
     this.displayedColumns = this.employesService.getDisplayedColumns()
 
-    this.dataSource = new MatTableDataSource(this._data);
+    this._data = [{ id: "Chargement...", matricule: "",  date_entree: "", fonction: "" }];
+
+    this.dataSource = new MatTableDataSource( this._data )
+
   }
 
   getRow(row: any){
     console.log(row)
   }
 
+  addUser(){
+    this.http.post("/api/users", { id: "1", matricule: "002133", nom_complet: "Doumbia", date_entree: "11/11/11", fonction: "Prof" } ).subscribe( (d) =>{
+      console.log(d)
+    } )
+  }
+
+  getUsers() {
+    return this.http.get<Array<Structure>>("/api/users").subscribe( (d) =>{
+      this._data = d
+    } )
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    
+    //this.getUsers()
   }
 
   applyFilter(event: Event) {
@@ -62,9 +85,17 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    setTimeout(() => {
+
+    this.http.get<any>("/api/users").subscribe( (d) =>{
+
+      this._data = d
+      
       this.isLoading = false
-    }, 3000);
+
+      this.dataSource = new MatTableDataSource(this._data);
+
+    } );
+
     
   }
 

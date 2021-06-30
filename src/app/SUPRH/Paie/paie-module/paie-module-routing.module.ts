@@ -1,3 +1,4 @@
+import { GradesService } from './../../../Services/Models/Codification/Grades/grades.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PaieCodificationComponent } from '../paie-codification/paie-codification.component';
@@ -34,12 +35,19 @@ import { GestionProfilsComponent } from '../administration-page/gestion-profils/
 import { AcomptesComponent } from '../retenu-page/acomptes/acomptes.component';
 import { AvancesComponent } from '../retenu-page/avances/avances.component';
 import { ServiceComponent } from '../paie-codification/service/service.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from 'src/app/Services/In-Memory/in-memory-data.service';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: "codification",
     pathMatch: 'full',
+  },
+  {
+    path: '/api/users',
+    component: InMemoryDataService
   },
   {
     path: "codification",
@@ -158,6 +166,15 @@ const routes: Routes = [
     MatInputModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { delay: 3000 }),
+    
+    
+    
+  ],
+  providers: [
+    GradesService,
+    InMemoryDataService
   ],
   exports: [RouterModule]
 })

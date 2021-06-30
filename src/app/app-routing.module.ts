@@ -1,3 +1,4 @@
+import { InMemoryDataService } from './Services/In-Memory/in-memory-data.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -25,6 +26,8 @@ import { AuthService } from './Services/Auth/auth.service';
 import { SidenavItemComponent } from './SUPRH/Paie/sidenav/sidenav-item/sidenav-item.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -81,11 +84,13 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     PerfectScrollbarModule,
-    RouterModule.forRoot( routes),
+
+    
+    RouterModule.forRoot( routes, { useHash: true }),
 
   ],
   exports: [RouterModule],
-  providers: [AccessGuardService, AuthService, AuthGuardService, GuestGuardService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
+  providers: [AccessGuardService, AuthService, AuthGuardService, GuestGuardService, ]
 })
 
 export class AppRoutingModule { }
