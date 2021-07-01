@@ -11,6 +11,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class PaieCongesComponent implements OnInit {
 
+  isLoading: boolean = true;
+
   displayedColumns: string[];
 
   _data: Structure | any;

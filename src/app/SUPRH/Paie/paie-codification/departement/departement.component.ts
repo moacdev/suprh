@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Structure } from 'src/app/Services/Models/Conges-Absence/conges-absences.service';
-import { EmployesService } from 'src/app/Services/Models/Employes/employes.service';
 
 @Component({
   selector: 'app-departement',
@@ -12,6 +11,8 @@ import { EmployesService } from 'src/app/Services/Models/Employes/employes.servi
   styleUrls: ['./departement.component.css']
 })
 export class DepartementComponent implements OnInit {
+
+  isLoading: boolean = true;
 
   displayedColumns: string[];
 

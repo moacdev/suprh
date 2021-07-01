@@ -167,7 +167,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatDialogModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { delay: 3000 }),
+    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { delay: 2000 }),
     
     
     

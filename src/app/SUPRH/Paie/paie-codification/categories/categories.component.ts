@@ -11,6 +11,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class CategoriesComponent implements OnInit {
 
+  isLoading: boolean = true;
+
   displayedColumns: string[];
 
   _data: Structure | any;

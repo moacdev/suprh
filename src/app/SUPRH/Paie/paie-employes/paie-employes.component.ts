@@ -51,20 +51,33 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
   }
 
   addUser(){
-    this.http.post("/api/users", { id: "1", matricule: "002133", nom_complet: "Doumbia", date_entree: "11/11/11", fonction: "Prof" } ).subscribe( (d) =>{
+    this.http.post("/api/users", { id: null, matricule: "002133", nom_complet: "Doumbia", date_entree: "11/11/11", fonction: "Prof" } ).subscribe( (d) =>{
       console.log(d)
     } )
+    this.getUsers()
   }
 
   getUsers() {
-    return this.http.get<Array<Structure>>("/api/users").subscribe( (d) =>{
+
+    this.isLoading = true;
+
+    this.http.get<any>("/api/users").subscribe( (d) =>{
+
       this._data = d
-    } )
+      this.dataSource = new MatTableDataSource(this._data);
+
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      
+      this.isLoading = false
+
+
+    } );
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
 
     
     //this.getUsers()
@@ -85,16 +98,8 @@ export class PaieEmployesComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-
-    this.http.get<any>("/api/users").subscribe( (d) =>{
-
-      this._data = d
-      
-      this.isLoading = false
-
-      this.dataSource = new MatTableDataSource(this._data);
-
-    } );
+    this.getUsers()
+    
 
     
   }

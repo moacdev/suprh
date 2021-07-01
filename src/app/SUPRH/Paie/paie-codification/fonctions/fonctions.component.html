@@ -1,5 +1,7 @@
 <div class="h-full w-full bg-white p-2">
-
+  <div class="h-full w-full loading_overlay" *ngIf="isLoading">
+    <mat-spinner diameter="30" style="margin: 15px auto;"></mat-spinner>
+  </div>
     <mat-form-field appearance="standard" class="bg-white">
       <mat-label>Recherche</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex:  id, libellé, etat" #input>

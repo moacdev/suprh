@@ -23,7 +23,22 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return {users};
+    let grades = [
+      { 
+        id: 0,
+        code: '12345 ' + 1,
+        libelle: 'string ' + 1,
+        etat: 'actif',
+      },
+      { 
+        id: 1,
+        code: '54321 ' + 1,
+        libelle: 'gnirts ' + 1,
+        etat: 'inactif',
+      },
+    ];
+
+    return {users, grades};
 
   }
 

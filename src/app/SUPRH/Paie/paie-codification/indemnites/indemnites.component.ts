@@ -13,6 +13,8 @@ import { EmployesService } from 'src/app/Services/Models/Employes/employes.servi
 })
 export class IndemnitesComponent implements OnInit {
 
+  isLoading: boolean = true;
+
   displayedColumns: string[];
 
   _data: Structure | any;

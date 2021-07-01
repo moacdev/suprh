@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Structure } from 'src/app/Services/Models/Conges-Absence/conges-absences.service';
 import { EmployesService } from 'src/app/Services/Models/Employes/employes.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-grades',
@@ -17,22 +18,24 @@ export class GradesComponent implements OnInit {
 
   _data: Structure | any;
 
+  isLoading: boolean = true;
+
   dataSource: MatTableDataSource<Structure>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor(private gradeService: GradesService) {
+  constructor(private gradeService: GradesService, private http: HttpClient) {
 
-    this._data = this.gradeService.getData();
-
-    //this.gradeService.Datas()
+    
     
     
 
     this.displayedColumns = this.gradeService.getDisplayedColumns()
 
-    this.dataSource = new MatTableDataSource(this._data);
+    this._data = [{ id: "Chargement...", matricule: "",  date_entree: "", fonction: "" }];
+
+    this.dataSource = new MatTableDataSource( this._data )
   }
 
   getRow(row: any){
@@ -57,6 +60,19 @@ export class GradesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadGrades();
+  }
+
+  loadGrades() {
+    this.isLoading= true;
+    this.http.get("/api/grades").subscribe( ( d )=> {
+      this._data = d
+
+      this.dataSource = new MatTableDataSource( this._data )
+
+      this.isLoading = false
+    } )
+    
   }
 
 }
