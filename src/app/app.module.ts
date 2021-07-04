@@ -5,9 +5,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+import { NotAccessDialogComponent } from './SUPRH/Paie/not-access-dialog/not-access-dialog.component';
 
 @NgModule({
   declarations: [
+  
+    
   ],
 
   imports: [

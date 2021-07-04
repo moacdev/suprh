@@ -10,3 +10,7 @@ table {
   td, th {
     width: calc(100% / 4);
   }
+
+  mat-step{
+    padding: 10px;
+  }

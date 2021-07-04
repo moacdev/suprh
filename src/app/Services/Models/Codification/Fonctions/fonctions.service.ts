@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Structure {
@@ -12,10 +13,6 @@ export interface Structure {
 })
 export class FonctionsService {
 
-  getData(): any {
-    return [
-    ];
-  }
   
   getDisplayedColumns(): string[] {
     return this.displayedColumns;
@@ -23,5 +20,16 @@ export class FonctionsService {
 
   displayedColumns: string[] = ['id', 'code', 'libelle', 'etat']
 
-  constructor() { }
+
+  apiCall(){
+    return this.http.get("/api/fonctions");
+  }
+
+  getDisplayedDataFromApiCall(){
+    return this.http.get("/api/fonctions");
+  }
+
+  constructor(private http: HttpClient) { }
+
+  
 }

@@ -24,10 +24,6 @@ import { FormsModule } from '@angular/forms';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AuthService } from './Services/Auth/auth.service';
 import { SidenavItemComponent } from './SUPRH/Paie/sidenav/sidenav-item/sidenav-item.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -86,7 +82,7 @@ const routes: Routes = [
     PerfectScrollbarModule,
 
     
-    RouterModule.forRoot( routes, { useHash: true }),
+    RouterModule.forRoot( routes, { useHash: true, onSameUrlNavigation: 'reload' }),
 
   ],
   exports: [RouterModule],

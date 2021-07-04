@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -13,16 +14,23 @@ export interface Structure {
 })
 export class CategoriesService {
 
-  getData(): any {
-    return [
-    ];
-  }
-  
+
   getDisplayedColumns(): string[] {
     return this.displayedColumns;
   }
 
   displayedColumns: string[] = ['id', 'code', 'libelle', 'etat']
 
-  constructor() { }
+
+  apiCall(){
+    return this.http.get("/api/categories");
+  }
+
+  getDisplayedDataFromApiCall(){
+    return this.http.get("/api/categories");
+  }
+
+  constructor(private http: HttpClient) { }
+
+  
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Structure {
@@ -11,32 +12,25 @@ export interface Structure {
   categorie: string;
   fonction: string;
 }
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class IndemnitesService {
 
-  getData(): any {
-    return [
-      {
-        id: "string",
-        code: "string",
-        libelle: "string",
-        type: "string",
-        type_indemnite: "string",
-        montant: "string",
-        grade: "string",
-        categorie: "string",
-        fonction: "string",
-      }
-    ];
-  }
-  
   getDisplayedColumns(): string[] {
     return this.displayedColumns;
   }
 
-  displayedColumns: string[] = ['id', 'code', 'libelle', 'type', 'type_indemnite', 'montant', 'grade', 'categorie', 'fonction']
+  apiCall(){
+    return this.http.get("/api/indemnites");
+  }
 
-  constructor() { }
+  getDisplayedDataFromApiCall(){
+    return this.http.get("/api/indemnites_table");
+  }
+
+  fields: string[] = ['id', 'code', 'libelle', 'type', 'type_indemnite', 'montant', 'grade', 'categorie', 'fonction']
+
+  displayedColumns: string[] = ['id', 'code', 'libelle', 'type', 'type_indemnite', 'montant']
+
+
+  constructor(private http: HttpClient) { }
 }

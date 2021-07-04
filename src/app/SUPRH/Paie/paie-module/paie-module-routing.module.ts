@@ -1,3 +1,4 @@
+import { NotAccessDialogComponent } from './../not-access-dialog/not-access-dialog.component';
 import { GradesService } from './../../../Services/Models/Codification/Grades/grades.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,10 +16,14 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatStepperModule } from "@angular/material/stepper";
 
 import { CommonModule } from '@angular/common';
 import { UserRowComponent } from '../user-row/user-row.component';
-import { FormsModule } from '@angular/forms';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'; 
 import { DepartementComponent } from '../paie-codification/departement/departement.component';
@@ -38,6 +43,13 @@ import { ServiceComponent } from '../paie-codification/service/service.component
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from 'src/app/Services/In-Memory/in-memory-data.service';
+import { FonctionsService } from 'src/app/Services/Models/Codification/Fonctions/fonctions.service';
+import { IndemnitesService } from 'src/app/Services/Models/Codification/Indemnites/indemnites.service';
+import { CategoriesService } from 'src/app/Services/Models/Codification/Categories/categories.service';
+import { DepartementsService } from 'src/app/Services/Models/Codification/Departements/departements.service';
+import { EchelonsService } from 'src/app/Services/Models/Codification/Echelons/echelons.service';
+import { DirectionsService } from 'src/app/Services/Models/Codification/Directions/directions.service';
+import { ServicesService } from 'src/app/Services/Models/Codification/Services/services.service';
 
 const routes: Routes = [
   {
@@ -153,6 +165,7 @@ const routes: Routes = [
     PaiePageComponent,
     PaieUtilisateursComponent,
     PaieParamsComponent,
+    NotAccessDialogComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -167,14 +180,22 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatDialogModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { delay: 2000 }),
-    
+    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { delay: 1000 }),
+    MatStepperModule,
+    ReactiveFormsModule,
     
     
   ],
   providers: [
     GradesService,
-    InMemoryDataService
+    FonctionsService,
+    CategoriesService,
+    IndemnitesService,
+    InMemoryDataService,
+    DepartementsService,
+    EchelonsService,
+    DirectionsService,
+    ServicesService
   ],
   exports: [RouterModule]
 })
